@@ -4,7 +4,7 @@ Windows -  WPF App, Create the Ini File
 ## Date: 4.7 17.30
 ### Options
 * create the Project
-* Use Node to organize the surce data
+* Use Node to organize the source data
 * Create function to handle the Ini File
 
 ### Problems
