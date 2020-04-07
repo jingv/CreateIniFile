@@ -24,63 +24,45 @@ namespace CreateIniFile
     public partial class MainWindow : Window
     {
         private List<TreeData> nodes;
+        private string IniFile;
         public MainWindow()
         {
             InitializeComponent();
+
+            
+
             InputData();
             ItemsView.ItemsSource = ViewModel.getChildNodes(0, nodes);// getNodes(0, nodes);
             //this.DataContext = new ViewModel();
 
-            string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "test.ini");
-            File.Create(filePath);//创建INI文件
-
-            MessageBox.Show(filePath);
-            MessageBox.Show(IniFileHandler.Write("S1", "1", "a", filePath).ToString());
-            IniFileHandler.Write("S1", "2", "a", filePath);
-            IniFileHandler.Write("S1", "3", "a", filePath);
-            IniFileHandler.Write("S2", "4", "a", filePath);
-            IniFileHandler.Write("S2", "5", "a", filePath);
-            IniFileHandler.Write("S2", "6", "a", filePath);
+            IniFile = IniFileHandler.CopyFile();
+            IniFileHandler.Write("S1", "1", "a", IniFile);
+            IniFileHandler.Write("S1", "2", "a", IniFile);
+            IniFileHandler.Write("S1", "3", "a", IniFile);
+            IniFileHandler.Write("S2", "4", "a", IniFile);
+            IniFileHandler.Write("S2", "5", "a", IniFile);
+            IniFileHandler.Write("S2", "6", "a", IniFile);
 
 
-            //IniFileHandler.DeleteKey("S1", "2", filePath);
-            //IniFileHandler.DeleteSection("S2", filePath);
+            IniFileHandler.DeleteKey("S1", "2", IniFile);
+            IniFileHandler.DeleteSection("S2", IniFile);
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            this.Closing += MainWindow_Closing;
 
 
 
 
         }
+
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            File.Delete(IniFile);
+        }
+
         private void InputData()
         {
             nodes = new List<TreeData>()

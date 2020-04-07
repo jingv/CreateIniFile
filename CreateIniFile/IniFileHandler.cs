@@ -33,7 +33,27 @@ namespace CreateIniFile
         /// <returns>非零表示成功，零表示失败</returns>
         [DllImport("kernel32")]
         private static extern int WritePrivateProfileString(string lpApplicationName, string lpKeyName, string lpStirng, string lpFileName);
-        
+
+        /// <summary>
+        /// 拷贝Default模板文件到新建默认文件YourIniFile（可操作）
+        /// </summary>
+        /// <returns>返回新文件路径</returns>
+        public static string CopyFile()
+        {
+            string SourceFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Default.ini");
+            if (!File.Exists(SourceFile))
+            {
+                MessageBox.Show("ERR: The Defalut File Does Not Exist!", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                return null;
+            }
+            else
+            {
+                string NewFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{DateTime.Now.ToFileTime()}.ini");
+                File.Copy(SourceFile, NewFilePath);
+                return NewFilePath;
+            }
+        }
+
         /// <summary>
         /// 读取INI文件值
         /// </summary>
