@@ -23,66 +23,30 @@ namespace CreateIniFile
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<TreeData> nodes;
-        private string IniFile;
+        private string iniFile;
+        private ViewModel viewModel;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            
+            iniFile = IniFileHandler.CopyFile();
+            viewModel = new ViewModel();
 
-            InputData();
-            ItemsView.ItemsSource = ViewModel.getChildNodes(0, nodes);// getNodes(0, nodes);
-            //this.DataContext = new ViewModel();
-
-            IniFile = IniFileHandler.CopyFile();
-            IniFileHandler.Write("S1", "1", "a", IniFile);
-            IniFileHandler.Write("S1", "2", "a", IniFile);
-            IniFileHandler.Write("S1", "3", "a", IniFile);
-            IniFileHandler.Write("S2", "4", "a", IniFile);
-            IniFileHandler.Write("S2", "5", "a", IniFile);
-            IniFileHandler.Write("S2", "6", "a", IniFile);
-
-
-            IniFileHandler.DeleteKey("S1", "2", IniFile);
-            IniFileHandler.DeleteSection("S2", IniFile);
-
-
-
-
+            ItemsView.ItemsSource = viewModel.TreeDatas;
 
             this.Closing += MainWindow_Closing;
-
-
-
-
         }
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            File.Delete(IniFile);
+            File.Delete(iniFile);
         }
-
-        private void InputData()
+ 
+        // 点击TreeView中的item
+        private void StackPanel_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
-            nodes = new List<TreeData>()
-            {
-                new TreeData(){ParentId = 0, NodeId = 1, NodeValue = "1"},
-                new TreeData(){ParentId = 1, NodeId = 2, NodeValue = "2"},
-                new TreeData(){ParentId = 2, NodeId = 3, NodeValue = "3"},
-                new TreeData(){ParentId = 3, NodeId = 4, NodeValue = "4"},
-                new TreeData(){ParentId = 4, NodeId = 5, NodeValue = "5"},
-                new TreeData(){ParentId = 5, NodeId = 6, NodeValue = "6"},
-                new TreeData(){ParentId = 6, NodeId = 7, NodeValue = "7"}
-            };
-        }
-        private List<TreeData> getNodes(int parentId, List<TreeData> nodes)
-        {
-            List<TreeData> mainNodes = nodes.Where(x => x.ParentId == parentId).ToList();
-            List<TreeData> otherNodes = nodes.Where(x => x.ParentId != parentId).ToList();
-            foreach (TreeData node in mainNodes)
-                node.ChildNodes = getNodes(node.NodeId, otherNodes);
-            return mainNodes;
+            TreePath.Text = viewModel.getTreePath((ItemsView.SelectedItem as TreeData), viewModel.Nodes);
         }
     }
 }

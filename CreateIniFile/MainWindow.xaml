@@ -24,14 +24,14 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.ColumnSpan="2"  Orientation="Horizontal" Margin="0,2,0,2">
                 <TextBlock VerticalAlignment="Center" FontSize="16">Tree Path：</TextBlock>
-                <TextBlock VerticalAlignment="Center" FontSize="16" Text="{Binding }"></TextBlock>
+                <TextBlock x:Name="TreePath" VerticalAlignment="Center" FontSize="16">>Root</TextBlock>
             </StackPanel>
             <TreeView Grid.Column="0" Grid.Row="1" x:Name="ItemsView" ItemsSource="{Binding TreeData}">
                 <TreeView.ItemTemplate>
                     <!--DataType="{x:Type local:TreeData}"-->
-                    <HierarchicalDataTemplate ItemsSource="{Binding Path=ChildNodes}">
-                        <StackPanel  Orientation="Horizontal" Margin="0,2,0,2">
-                            <TextBlock VerticalAlignment="Center" FontSize="14" Text="{Binding NodeValue}" FontWeight="Bold"></TextBlock>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Path=ChildNodes, Mode=TwoWay}">
+                        <StackPanel Orientation="Horizontal" Margin="0,2,0,2" PreviewMouseUp="StackPanel_PreviewMouseUp">
+                            <TextBlock VerticalAlignment="Center" FontSize="14" Text="{Binding NodeValue, Mode=TwoWay}" FontWeight="Bold" />
                         </StackPanel>
                     </HierarchicalDataTemplate>
                 </TreeView.ItemTemplate>
