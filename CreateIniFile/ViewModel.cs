@@ -99,6 +99,5 @@ namespace CreateIniFile
                 }
             }
         }
-
     }
 }

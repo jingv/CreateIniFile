@@ -15,7 +15,7 @@
         <Grid>
             <!--两行两列-->
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -36,8 +36,12 @@
                     </HierarchicalDataTemplate>
                 </TreeView.ItemTemplate>
             </TreeView>
-            <!--照片-->
-            <Image Grid.Column="1" Grid.Row="1"  x:Name="MyImage"/>
+            <!--编辑框-->
+            <Grid Grid.Column="1" Grid.Row="1" Background="LightGreen">
+                <TextBlock Margin="10 10 0 0">Section:</TextBlock>
+                <TextBox Margin="60 10 0 0" Width="100" Height="auto" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center">Your Section</TextBox>
+                <TextBlock Margin="10 40 10 10" Width="500" Height="auto" FontSize="13"  HorizontalAlignment="Left" VerticalAlignment="Top">KeyValues: </TextBlock>
+            </Grid>
         </Grid>
     </Grid>
 </Window>
