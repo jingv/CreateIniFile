@@ -38,9 +38,14 @@
             </TreeView>
             <!--编辑框-->
             <Grid Grid.Column="1" Grid.Row="1" Background="LightGreen">
-                <TextBlock Margin="10 10 0 0">Section:</TextBlock>
-                <TextBox Margin="60 10 0 0" Width="100" Height="auto" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center">Your Section</TextBox>
+                <Grid Margin="10" Height="20" VerticalAlignment="Top">
+                    <TextBlock VerticalAlignment="Center">Section:</TextBlock>
+                    <TextBox x:Name="SectionName" Margin="50 0 0 0" Width="100" Height="auto" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+                </Grid>
                 <TextBlock Margin="10 40 10 10" Width="500" Height="auto" FontSize="13"  HorizontalAlignment="Left" VerticalAlignment="Top">KeyValues: </TextBlock>
+                <Grid Margin="10 60 10 10" x:Name="KeyValuesArea">
+                    
+                </Grid>                                    
             </Grid>
         </Grid>
     </Grid>
