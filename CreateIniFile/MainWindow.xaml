@@ -23,8 +23,8 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.ColumnSpan="2"  Orientation="Horizontal" Margin="0,2,0,2">
-                <TextBlock VerticalAlignment="Center" FontSize="16">Tree Path：</TextBlock>
-                <TextBlock x:Name="TreePath" VerticalAlignment="Center" FontSize="16">>Root</TextBlock>
+                    <TextBlock VerticalAlignment="Center" FontSize="16">Tree Path：</TextBlock>
+                    <TextBlock x:Name="TreePath" VerticalAlignment="Center" FontSize="16">>Root</TextBlock>
             </StackPanel>
             <TreeView Grid.Column="0" Grid.Row="1" x:Name="ItemsView" ItemsSource="{Binding TreeData}">
                 <TreeView.ItemTemplate>
@@ -43,7 +43,7 @@
                     <TextBox x:Name="SectionName" Margin="50 0 0 0" Width="100" Height="auto" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
                 </Grid>
                 <TextBlock Margin="10 40 10 10" Width="500" Height="auto" FontSize="13"  HorizontalAlignment="Left" VerticalAlignment="Top">KeyValues: </TextBlock>
-                <Grid Margin="10 60 10 10" x:Name="KeyValuesArea">
+                <Grid Margin="10 60 10 10" x:Name="KeyValuesArea" >
                     
                 </Grid>                                    
             </Grid>

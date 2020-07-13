@@ -1,5 +1,5 @@
 ﻿CreateIniFile
-
+1.0.0.0
 
 winexe
 C#
@@ -12,9 +12,9 @@ TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 E:\Other_Code\CreateIniFile\CreateIniFile\App.xaml
 11151548125
 
-71395839390
+82065775625
 1921654412462
 MainWindow.xaml;
 
-False
+True
 
